@@ -1,0 +1,99 @@
+/* Basic Reset & Brutalist/Minimalist Base */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; /* Common system font for brutalist feel */
+    /* Or consider a monospace font: 'Courier New', Courier, monospace; */
+    background-color: #0a0a0a; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    overflow: hidden; /* Prevent scrollbars from mouse effect */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.background-logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(5vw, 15vw, 200px); /* Responsive font size */
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.05); /* Very subtle */
+    z-index: -1; /* Behind everything */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    user-select: none; /* Not selectable */
+    white-space: nowrap;
+}
+
+.content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative; /* For z-indexing if needed, and for script calculations */
+}
+
+.image-gallery {
+    display: flex;
+    gap: 30px; /* Space between images */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens if many images */
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* For 3D-ish effects on image containers if desired later */
+}
+
+.image-container {
+    width: 250px; /* Adjust as needed */
+    height: 350px; /* Adjust as needed */
+    border: 2px solid #e0e0e0; /* Stark border - brutalist */
+    background-color: #1a1a1a; /* Placeholder background */
+    overflow: hidden; /* Ensure image doesn't spill out */
+    transition: transform 0.2s ease-out; /* Smooth transition for mouse effect */
+    box-shadow: 5px 5px 0px 0px #333; /* Simple, hard shadow - brutalist touch */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container without stretching */
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888; /* Subdued footer text */
+    width: 100%;
+    position: fixed; /* Fixed at the bottom */
+    bottom: 0;
+    left: 0;
+}
+
+/* Optional: Small screen adjustments */
+@media (max-width: 768px) {
+    .image-gallery {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .image-container {
+        width: 200px;
+        height: 280px;
+    }
+    .background-logo {
+        font-size: clamp(8vw, 20vw, 150px);
+    }
+    footer {
+        font-size: 1em;
+    }
+}
